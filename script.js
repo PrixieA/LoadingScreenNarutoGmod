@@ -1,24 +1,24 @@
 let player;
 let isMuted = true;
 
-// Charger l'API YouTube
+// Charger API Dailymotion
 let tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
+tag.src = "https://api.dmcdn.net/all.js";
 document.body.appendChild(tag);
 
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video');
+function onload() {
+    player = DM.player(document.getElementById("video"));
 }
 
-// Bouton mute/unmute
+// Bouton
 document.getElementById("muteBtn").addEventListener("click", () => {
     if (!player) return;
 
     if (isMuted) {
-        player.unMute();
+        player.setMuted(false);
         document.getElementById("muteBtn").innerText = "🔊 Couper le son";
     } else {
-        player.mute();
+        player.setMuted(true);
         document.getElementById("muteBtn").innerText = "🔇 Activer le son";
     }
 
