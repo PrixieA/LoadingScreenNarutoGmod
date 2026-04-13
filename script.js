@@ -1,26 +1,23 @@
-let player;
-let isMuted = true;
+let slides = document.querySelectorAll(".slide");
+let index = 0;
 
-// Charger API Dailymotion
-let tag = document.createElement('script');
-tag.src = "https://api.dmcdn.net/all.js";
-document.body.appendChild(tag);
+function nextSlide() {
+    slides[index].classList.remove("active");
 
-function onload() {
-    player = DM.player(document.getElementById("video"));
+    index = (index + 1) % slides.length;
+
+    slides[index].classList.add("active");
 }
 
-// Bouton
-document.getElementById("muteBtn").addEventListener("click", () => {
-    if (!player) return;
+// Change toutes les 5 secondes
+setInterval(nextSlide, 5000);
 
-    if (isMuted) {
-        player.setMuted(false);
-        document.getElementById("muteBtn").innerText = "🔊 Couper le son";
-    } else {
-        player.setMuted(true);
-        document.getElementById("muteBtn").innerText = "🔇 Activer le son";
-    }
 
-    isMuted = !isMuted;
-});
+// GMod loading text
+function GameDetails(servername) {
+    document.querySelector("h1").innerText = servername;
+}
+
+function SetStatusChanged(status) {
+    document.getElementById("status").innerText = status;
+}
