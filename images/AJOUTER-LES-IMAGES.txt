@@ -1,0 +1,2 @@
+Ajoutez ici imgupdate.png, img1.png, img2.png, img3.png, etc.
+Réglez imageCount dans config.js (sans compter imgupdate.png).
